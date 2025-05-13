@@ -27,9 +27,17 @@ public class AlumnoController {
     @GetMapping("/traerAlumnos")
     public List<Alumno> TraerAlumnos(){
         return alumnoRepository.findAll();
-
-
     }
+
+    //metodo get para traer un alumno
+    @GetMapping("/traer-alumno/{id}")
+    public ResponseEntity<Alumno> traerUnAlumno(@PathVariable Long id) {
+    return alumnoRepository.findById(id)
+        .map(alumno -> ResponseEntity.ok(alumno))
+        .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
     // metodo para ingresar un alumno a la base de datos 
     @PostMapping("/insertar-alumnos")
     public Alumno insertarAlumno(@RequestBody Alumno alumno){
