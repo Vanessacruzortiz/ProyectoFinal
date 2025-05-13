@@ -12,14 +12,14 @@ public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String NumeroControl;
     private String nombre;
     private String apellido;
     private String telefono;
     private String email;
     private String  carrera;
-    private String imagenUrl;
+    private String imagenURL;
 
     public String getNumeroControl() {
         return NumeroControl;
@@ -51,13 +51,13 @@ public class Alumno {
     }
 
 
-    public String getImagenUrl() {
-        return imagenUrl;
+    public String getImagenURL() {
+        return imagenURL;
     }
 
 
-    public void setImagenUrl(String imagenUrl) {
-        this.imagenUrl = imagenUrl;
+    public void setImagenURL(String imagenURL) {
+        this.imagenURL = imagenURL;
     }
 
     public Long getId() {
