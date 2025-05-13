@@ -4,6 +4,8 @@ import java.util.List;
 import com.evelyn.alumnos.model.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,12 +18,19 @@ public class AlumnoController {
     @Autowired
     private AlumnoRepository alumnoRepository;
 
+
+    //metodo get para traer todos los alumnos
     @GetMapping("/traerAlumnos")
     public List<Alumno> TraerAlumnos(){
         return alumnoRepository.findAll();
 
 
     }
+    // metodo para ingresar un alumno a la base de datos 
+    @PostMapping("/insertar-alumnos")
+    public Alumno insertarAlumno(@RequestBody Alumno alumno){
+        return alumnoRepository.save(alumno);
 
+    }
 
 }
