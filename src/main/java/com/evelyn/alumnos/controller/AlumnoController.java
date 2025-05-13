@@ -4,6 +4,7 @@ import java.util.List;
 import com.evelyn.alumnos.model.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,5 +53,9 @@ public class AlumnoController {
     }).orElseGet(() -> ResponseEntity.notFound().build());
 
     }
-
+    // metodo para eliminar un alumno a la base de datos 
+    @DeleteMapping("/eliminar-alumnos/{id}")
+    public void eliminarAlumno(@PathVariable Long id){
+        alumnoRepository.deleteById(id);
+    }
 }
