@@ -17,6 +17,7 @@ import com.evelyn.alumnos.AlumnoRepository;
 
 @RestController
 @RequestMapping("/alumnos")
+@crossOrigin(origins = "*")
 public class AlumnoController {
 
     @Autowired
@@ -38,13 +39,13 @@ public class AlumnoController {
     }
 
 
-    // metodo para ingresar un alumno a la base de datos 
+    // metodo para ingresar un alumno a la base de datos
     @PostMapping("/insertar-alumnos")
     public Alumno insertarAlumno(@RequestBody Alumno alumno){
         return alumnoRepository.save(alumno);
 
     }
-    // metodo para editar un alumno a la base de datos 
+    // metodo para editar un alumno a la base de datos
     @PutMapping("/editar-alumnos/{id}")
     public ResponseEntity<Alumno>  actualizarAlumno(@PathVariable Long id, @RequestBody Alumno alumno){
         return alumnoRepository.findById(id).map(alumnoExistente -> {
@@ -61,7 +62,7 @@ public class AlumnoController {
     }).orElseGet(() -> ResponseEntity.notFound().build());
 
     }
-    // metodo para eliminar un alumno a la base de datos 
+    // metodo para eliminar un alumno a la base de datos
     @DeleteMapping("/eliminar-alumnos/{id}")
     public void eliminarAlumno(@PathVariable Long id){
         alumnoRepository.deleteById(id);
